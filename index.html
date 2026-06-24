@@ -1,0 +1,64 @@
+---
+layout: default
+title: 日志
+---
+
+{% assign latest = site.posts.first %}
+
+<section class="home-hero">
+  <div class="wrap hero-layout">
+    <div class="hero-copy">
+      <p class="eyebrow">Personal journal</p>
+      <h1>把今天留下来。</h1>
+      <p>这里收纳日常、阅读、代码和那些还没有完全成形的想法。</p>
+    </div>
+
+    {% if latest %}
+      <a class="latest-panel" href="{{ latest.url | relative_url }}">
+        <span class="panel-label">最新日志</span>
+        <time datetime="{{ latest.date | date_to_xmlschema }}">{{ latest.date | date: "%Y.%m.%d" }}</time>
+        <strong>{{ latest.title | escape }}</strong>
+        <span>{{ latest.excerpt | strip_html | truncate: 92 }}</span>
+      </a>
+    {% endif %}
+  </div>
+</section>
+
+<section class="wrap journal-section" aria-labelledby="journal-title">
+  <div class="section-head">
+    <div>
+      <p class="eyebrow">Entries</p>
+      <h2 id="journal-title">最近记录</h2>
+    </div>
+    <a class="text-link" href="{{ '/archive/' | relative_url }}">查看归档</a>
+  </div>
+
+  {% if site.posts.size > 0 %}
+    <div class="post-list">
+      {% for post in site.posts %}
+        <a class="post-card" href="{{ post.url | relative_url }}">
+          <time class="date-mark" datetime="{{ post.date | date_to_xmlschema }}">
+            <span class="month">{{ post.date | date: "%b" }}</span>
+            <span class="day">{{ post.date | date: "%d" }}</span>
+          </time>
+          <span class="post-card-body">
+            <span class="post-card-title">{{ post.title | escape }}</span>
+            <span class="post-card-excerpt">{{ post.excerpt | strip_html | truncate: 126 }}</span>
+            {% if post.tags.size > 0 %}
+              <span class="tag-list">
+                {% for tag in post.tags %}
+                  <span>{{ tag }}</span>
+                {% endfor %}
+              </span>
+            {% endif %}
+          </span>
+        </a>
+      {% endfor %}
+    </div>
+  {% else %}
+    <div class="empty-state">
+      <h3>还没有日志</h3>
+      <p>在 <code>_posts/</code> 新建一篇 Markdown，就会出现在这里。</p>
+    </div>
+  {% endif %}
+</section>

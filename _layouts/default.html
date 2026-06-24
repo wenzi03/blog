@@ -1,0 +1,31 @@
+<!doctype html>
+<html lang="{{ page.lang | default: site.lang | default: 'zh-CN' }}">
+  <head>
+    {% include head.html %}
+  </head>
+  <body>
+    <a class="skip-link" href="#content">跳到正文</a>
+
+    <header class="site-header">
+      <div class="wrap header-grid">
+        <a class="site-title" href="{{ '/' | relative_url }}">{{ site.title | escape }}</a>
+        <nav class="site-nav" aria-label="主导航">
+          <a href="{{ '/' | relative_url }}">日志</a>
+          <a href="{{ '/archive/' | relative_url }}">归档</a>
+          <a href="{{ '/about/' | relative_url }}">关于</a>
+        </nav>
+      </div>
+    </header>
+
+    <main id="content">
+      {{ content }}
+    </main>
+
+    <footer class="site-footer">
+      <div class="wrap footer-grid">
+        <span>© {{ site.time | date: "%Y" }} {{ site.title | escape }}</span>
+        <span>Published with GitHub Pages</span>
+      </div>
+    </footer>
+  </body>
+</html>

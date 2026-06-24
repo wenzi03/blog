@@ -1,0 +1,26 @@
+title: "Wenzi 的日志"
+description: "把日常、阅读、代码和想法按日期留下来。"
+lang: zh-CN
+timezone: Asia/Shanghai
+
+url: "https://wenzi03.github.io"
+baseurl: "/blog"
+
+permalink: /:year/:month/:day/:title/
+markdown: kramdown
+
+author:
+  name: "wenzi03"
+
+defaults:
+  - scope:
+      path: ""
+      type: "posts"
+    values:
+      layout: "post"
+      author: "wenzi03"
+
+exclude:
+  - README.md
+  - Gemfile
+  - Gemfile.lock
